@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './components/Header'
 import List from './components/List'
+import Description from './components/Description'
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
 
       <List />
 
-      {/*Description*/}
+      <Description />
 
 
     </div>

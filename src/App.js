@@ -1,7 +1,17 @@
+// import React from 'react';
+import Header from './components/Header'
+
 function App() {
   return (
     <div>
-      <h1>test</h1>
+
+      <Header title={'Pokedex'} />
+
+      {/*List*/}
+
+      {/*Description*/}
+
+
     </div>
   );
 }

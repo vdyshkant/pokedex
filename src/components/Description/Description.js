@@ -77,7 +77,7 @@ const Description = () => {
 
       <StatsTable>
         <DescriptionItem param='Type' value='Fire' />
-        {console.log(pokemon)}
+
         {pokemon.stats.map(({name,value}) => (
           <DescriptionItem key={name} param={name} value={value} />
         ))}

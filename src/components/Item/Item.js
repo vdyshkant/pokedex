@@ -19,13 +19,10 @@ const Item = ({pokemon}) => {
     if (isActive === false) {
       dispatch({type: 'MAKE_DESCRIPTION_ACTIVE'})
     }
-    console.log(`Current clicked pokemon: ${name}`)
   }
-
 
   return (
     <ItemContainer onClick={ () => showPokemonDescription() }>
-      {console.log('pokemon', pokemon.types)}
       <img className='avatar' src={`https://pokeres.bastionbot.org/images/pokemon/${id}.png`} alt=""/>
 
       <h2>{name}</h2>

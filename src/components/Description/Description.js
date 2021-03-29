@@ -1,19 +1,78 @@
 import React from 'react';
+import {useSelector} from 'react-redux'
+import { createSelector } from "reselect";
+import DescriptionItem from '../DescriptionItem'
 import {DescriptionStyled, PokemonName, StatsTable} from './DescriptionStyled'
 
+const getStats = function(stats) {
+  return stats.map(stat => {
+    return {
+      name: stat.stat.name,
+      value: stat.base_stat
+    }
+  })
+}
+
+const pokemonSelector = createSelector(
+  state => state.items,
+  state => state.currentPokemonId,
+  (items, activePokemonId) => {
+    const data = items.filter(({ id }) => id === activePokemonId);
+
+    if (data.length < 1) {
+      return {
+        id: 1,
+        name: '000',
+        weight: '000',
+        stats: [
+          {name:'attack',value:'000'},
+          {name:'defense',value:'000'},
+          {name:'hp',value:'000'},
+          {name:'specialAttack',value:'000'},
+          {name:'specialDefense',value:'000'},
+          {name:'speed',value:'000'},
+        ],
+        moves: '000',
+      }
+    }
+    const {
+      id,
+      name,
+      weight,
+      stats: pokemonStats,
+    } = data[0];
+    return {
+      id,
+      name,
+      weight,
+      stats: getStats(pokemonStats),
+      moves: data[0].moves.length,
+    }
+  }
+)
+
 const Description = () => {
+  const pokemon = useSelector(pokemonSelector)
+
+  const name = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)
+  const id = `#${('00' + pokemon.id).slice(-3)}`
+
   return (
     <DescriptionStyled>
+      <img className='avatar' src={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`} alt=""/>
 
-      <img className="avatar" src="https://picsum.photos/500/300" alt=""/>
-
-      <PokemonName>pokemonname</PokemonName>
+      <PokemonName>{`${name} ${id}`}</PokemonName>
 
       <StatsTable>
-          <div>Type</div>
-          <div>Fire</div>
-      </StatsTable>
+        <DescriptionItem param='Type' value='Fire' />
+        {console.log(pokemon)}
+        {pokemon.stats.map(({name,value}) => (
+          <DescriptionItem key={name} param={name} value={value} />
+        ))}
 
+        <DescriptionItem param='Weight' value={pokemon.weight} />
+        <DescriptionItem param='Total moves' value={pokemon.moves} />
+      </StatsTable>
     </DescriptionStyled>
   );
 };

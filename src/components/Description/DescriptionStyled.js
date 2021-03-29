@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const DescriptionStyled = styled.div`
-  outline: 2px solid tan;
+  border: 2px solid gray;
 
   position: sticky;
   top: 20px;
@@ -27,19 +27,23 @@ export const PokemonName = styled.h2`
 `
 
 export const StatsTable = styled.div`
-  background: tomato;
-  border: 1px solid #000;  
-  display: grid;
-  flex-flow:row wrap;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: repeat(5, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
   text-align: center;
   font-size: 0.8rem;
   line-height: 1.4rem;
-  
-  & > div {
+    
+  .node {
+    display: grid;
+    flex-flow:row wrap;
+    grid-template-columns: 2fr 1fr;
     border: 1px solid #000;
+    border-bottom: none;
+    
+    &:last-child {
+    border-bottom: 1px solid #000;
+    }
+    
+    .first-node {
+      border-right: 1px solid #000;
+    }
   }
 `

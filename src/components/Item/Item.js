@@ -1,12 +1,20 @@
 import React from 'react';
+import {useSelector} from 'react-redux'
 import {ItemContainer} from './ItemContainer'
 
-const Item = () => {
+const Item = ({pokemon}) => {
+  const currentId = useSelector(state => state.currentPokemonId)
+
+  let {
+    name = '-',
+    id,
+  } = pokemon;
+
   return (
     <ItemContainer>
-      <img className="avatar" src="https://picsum.photos/400/300" alt=""/>
+      <img className='avatar' src={`https://pokeres.bastionbot.org/images/pokemon/${id}.png`} alt=""/>
 
-      <div className='name'>pokemon_name</div>
+      <h2>{name}</h2>
     </ItemContainer>
   );
 };

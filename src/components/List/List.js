@@ -1,14 +1,17 @@
 import React from 'react';
+import {useSelector} from 'react-redux'
 import Item from '../Item/Item'
 import Button from '../Button/Button'
 import {ListContainer} from "./ListContainer";
 
 const List = () => {
-  const n = 12
+  const list = useSelector( state => state.items )
   return (
     <ListContainer>
-      {[...Array(n)].map((e, i) => <Item key={i} style={{width: '120px', height: '100px',}} />) }
-
+      { list.map( (item, i) => {
+        // console.log('ID:::', item.id)
+        return <Item key={i} pokemon={item} />
+      } ) }
       <Button />
     </ListContainer>
   );

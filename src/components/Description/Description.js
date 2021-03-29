@@ -4,13 +4,25 @@ import { createSelector } from "reselect";
 import DescriptionItem from '../DescriptionItem'
 import {DescriptionStyled, PokemonName, StatsTable} from './DescriptionStyled'
 
-const getStats = function(stats) {
+function getStats(stats) {
   return stats.map(stat => {
     return {
-      name: stat.stat.name,
+      name: preetifyTitle(stat.stat.name),
       value: stat.base_stat
     }
   })
+}
+
+function preetifyTitle(title){
+  let name = title.replace('special', 'SP');
+  name = name.replace(/-/g, " ");
+
+  if (name.length < 3) {
+    name = name.toUpperCase()
+  } else {
+    name = name.charAt(0).toUpperCase() + name.slice(1)
+  }
+  return name;
 }
 
 const pokemonSelector = createSelector(

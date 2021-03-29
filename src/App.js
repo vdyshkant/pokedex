@@ -3,6 +3,11 @@ import Wrapper from './components/Wrapper'
 import Header from './components/Header'
 import List from './components/List'
 import Description from './components/Description'
+import styled from 'styled-components'
+
+const Container = styled.div`
+  display: flex;
+`
 
 function App() {
   return (
@@ -10,9 +15,11 @@ function App() {
 
       <Header title={'Pokedex'} />
 
-      <List />
+      <Container>
+        <List />
 
-      <Description />
+        <Description />
+      </Container>
 
 
     </Wrapper>

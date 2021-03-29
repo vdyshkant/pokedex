@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from "styled-components";
 
-const DescriptionStyled = styled.div`
+export const DescriptionStyled = styled.div`
   outline: 2px solid tan;
 
   position: sticky;
@@ -23,11 +22,11 @@ const DescriptionStyled = styled.div`
     margin-bottom: 0.8rem;
   }
 `
-const PokemonName = styled.h2`
+export const PokemonName = styled.h2`
   text-align: center;
 `
 
-const StatsTable = styled.div`
+export const StatsTable = styled.div`
   background: tomato;
   border: 1px solid #000;  
   display: grid;
@@ -44,22 +43,3 @@ const StatsTable = styled.div`
     border: 1px solid #000;
   }
 `
-
-const Description = () => {
-  return (
-    <DescriptionStyled>
-
-      <img className="avatar" src="https://picsum.photos/500/300" alt=""/>
-
-      <PokemonName>pokemonname</PokemonName>
-
-      <StatsTable>
-          <div>Type</div>
-          <div>Fire</div>
-      </StatsTable>
-
-    </DescriptionStyled>
-  );
-};
-
-export default Description;

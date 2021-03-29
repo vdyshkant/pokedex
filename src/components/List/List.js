@@ -9,7 +9,6 @@ const List = () => {
   return (
     <ListContainer>
       { list.map( (item, i) => {
-        // console.log('ID:::', item.id)
         return <Item key={i} pokemon={item} />
       } ) }
       <Button />

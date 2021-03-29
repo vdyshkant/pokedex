@@ -10,6 +10,8 @@ const Item = ({pokemon}) => {
     id,
   } = pokemon;
 
+  name = name.charAt(0).toUpperCase() + name.slice(1)
+
   return (
     <ItemContainer>
       <img className='avatar' src={`https://pokeres.bastionbot.org/images/pokemon/${id}.png`} alt=""/>

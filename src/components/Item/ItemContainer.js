@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from "styled-components";
 
-const ItemContainer = styled.div`
+export const ItemContainer = styled.div`
   outline: 2px dashed magenta;
 
   min-height: 180px; 
@@ -41,14 +40,3 @@ const ItemContainer = styled.div`
     text-transform: capitalize;
   }
 `
-const Item = () => {
-  return (
-    <ItemContainer>
-      <img className="avatar" src="https://picsum.photos/400/300" alt=""/>
-
-      <div className='name'>pokemon_name</div>
-    </ItemContainer>
-  );
-};
-
-export default Item;

@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from "styled-components";
 
-const ButtonStyled = styled.button`
+export const ButtonStyled = styled.button`
   width: 100%;
   height: 40px;
   background: dodgerblue;
@@ -20,13 +19,3 @@ const ButtonStyled = styled.button`
     right: 0;
   }
 `
-
-const Button = () => {
-  return (
-    <ButtonStyled>
-      Load More
-    </ButtonStyled>
-  );
-};
-
-export default Button;

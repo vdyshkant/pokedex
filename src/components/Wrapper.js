@@ -1,15 +1,17 @@
 import React from 'react';
 import styled from 'styled-components'
 
-const Container = styled.div`
+const Container = styled.main`
     outline: 2px dashed dodgerblue;
     
     width: 100%;
     margin-right: auto;
     margin-left: auto;
+    padding: 0 15px;
     
     @media (min-width:576px) {
       max-width: 540px;
+      padding: 0;
     }
     
     @media (min-width:768px) {
@@ -20,7 +22,6 @@ const Container = styled.div`
       max-width: 1024px;
     }
 `
-
 const Wrapper = ({children}) => {
     return (
         <Container>

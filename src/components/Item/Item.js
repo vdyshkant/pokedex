@@ -1,9 +1,11 @@
 import React from 'react';
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
 import {ItemContainer} from './ItemContainer'
 import Tags from '../Tags'
 
 const Item = ({pokemon}) => {
+  const dispatch = useDispatch()
+  const isActive = useSelector(state => state.isDescriptionActive)
 
   let {
     name = '-',
@@ -12,8 +14,17 @@ const Item = ({pokemon}) => {
 
   name = name.charAt(0).toUpperCase() + name.slice(1)
 
+  const showPokemonDescription = () => {
+    dispatch({type: 'SET_CURRENT_POKEMON_ID', payload: pokemon.id})
+    if (isActive === false) {
+      dispatch({type: 'MAKE_DESCRIPTION_ACTIVE'})
+    }
+    console.log(`Current clicked pokemon: ${name}`)
+  }
+
+
   return (
-    <ItemContainer>
+    <ItemContainer onClick={ () => showPokemonDescription() }>
       {console.log('pokemon', pokemon.types)}
       <img className='avatar' src={`https://pokeres.bastionbot.org/images/pokemon/${id}.png`} alt=""/>
 

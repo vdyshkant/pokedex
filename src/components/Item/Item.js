@@ -52,7 +52,7 @@ const Item = ({pokemon}) => {
     <ItemContainer className={isHidden} onClick={ () => showPokemonDescription() }>
       <img className='avatar' src={`https://pokeres.bastionbot.org/images/pokemon/${id}.png`} alt=""/>
 
-      <h2>{name}</h2>
+      <h2 className='name'>{name}</h2>
 
       <Tags tags={pokemon.types}/>
     </ItemContainer>

@@ -1,64 +1,70 @@
 import React, {useEffect} from 'react';
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import Wrapper from './components/Wrapper'
 import Header from './components/Header'
+import Filter from './components/Filter/Filter'
 import List from './components/List/List'
-import Description from './components/Description'
+import Description from './components/Description/Description'
 import styled from 'styled-components'
+import {updateUrl, updateCollection} from './store/reducer'
 
 const Container = styled.div`
   display: flex;
 `
 
+function downloadPokemons(baseUrl, dispatch) {
+  getPokemons(baseUrl)
+
+  async function getPokemons(url) {
+    let parsedList = await getList(url);
+    let pokemons = await getItems(parsedList);
+    dispatch(updateCollection(pokemons))
+
+    function getList(url) {
+      return fetch(url)
+        .then(res => res.json())
+        .then(data => {
+          dispatch(updateUrl(data.next))
+          return data.results // pokemons list
+        })
+    }
+
+    function getItems(list) {
+      let promises = [];
+      for (let i = 0; i < list.length; i++) {
+        let pokemonUrl = list[i]['url']
+        promises.push(fetch(pokemonUrl));
+      }
+      return Promise.all(promises)
+        .then( values => {
+          return Promise.all(values.map(r => r.json()))
+        })
+    }
+  }
+};
+
 function App() {
   const dispatch = useDispatch()
-
-  function getList() {
-    return new Promise((resolve, reject)=>{
-      const res = fetch('https://pokeapi.co/api/v2/pokemon/?limit=4')
-      resolve(res)
-    })
-      .then(res => {
-        return res.json()
-      })
-      .then(data => {
-        dispatch({type: 'ADD_INITIAL_POKEMON_LIST', payload: data.results})
-        return data.results
-      })
-  }
-
-  function getPokemons(index) {
-    let promises = [];
-    for (let i = 1; i <= index; i++) {
-      promises.push(fetch(`https://pokeapi.co/api/v2/pokemon/${i}`));
-    }
-    return Promise.all(promises)
-      .then( values => {
-        return Promise.all(values.map(r => r.json()))
-      })
-  }
-
-  async function getPokemonsData() {
-    let limitedList = await getList();
-    dispatch({type: 'ADD_INITIAL_POKEMON_LIST', payload: limitedList})
-
-    let pokemons = await getPokemons(limitedList.length);
-    dispatch({type: 'ADD_POKEMON_DATA_TO_COLLECTION', payload: pokemons})
-  }
+  const fetchUrl = useSelector(state => state.fetchUrl)
+  const isDescriptionActive = useSelector(state => state.isDescriptionActive)
+  const isAskedForDownload = useSelector(state => state.isAskedForDownload)
 
   useEffect( () => {
-    getPokemonsData();
-  }, []);
+    downloadPokemons(fetchUrl, dispatch)
+  }, [isAskedForDownload]);
+
 
   return (
     <Wrapper>
 
       <Header title={'Pokedex'} />
 
+      <Filter />
+
       <Container>
         <List />
 
-        <Description />
+        {isDescriptionActive && <Description />}
       </Container>
 
 

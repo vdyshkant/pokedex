@@ -4,6 +4,7 @@ const defaultState = {
   isDescriptionActive: false,
   currentPokemonId: null,
   currentCategory: null,
+  isAskedForDownload: false,
 }
 
 const MAKE_DESCRIPTION_ACTIVE = "MAKE_DESCRIPTION_ACTIVE"
@@ -11,6 +12,7 @@ const SET_CURRENT_POKEMON_ID = "SET_CURRENT_POKEMON_ID"
 const UPDATE_COLLECTION = "UPDATE_COLLECTION"
 const CURRENT_CATEGORY = "CURRENT_CATEGORY"
 const UPDATE_URL = "UPDATE_URL"
+const DOWNLOAD_ITEMS = "DOWNLOAD_ITEMS"
 
 export const reducer = (state = defaultState, action) => {
   switch (action.type) {
@@ -33,6 +35,9 @@ export const reducer = (state = defaultState, action) => {
     case UPDATE_URL:
       return {...state, fetchUrl: action.payload}
 
+    case DOWNLOAD_ITEMS:
+      return {...state, isAskedForDownload: !state.isAskedForDownload}
+
     default:
       return state
   }
@@ -43,3 +48,4 @@ export const setCurrentPokemonId = (payload) => ({type: SET_CURRENT_POKEMON_ID, 
 export const updateCollection = (payload) => ({type: UPDATE_COLLECTION, payload})
 export const setCurrentCategory = (payload) => ({type: CURRENT_CATEGORY, payload})
 export const updateUrl = (payload) => ({type: UPDATE_URL, payload})
+export const downloadItems = (payload) => ({type: DOWNLOAD_ITEMS, payload})

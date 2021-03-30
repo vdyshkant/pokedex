@@ -3,6 +3,7 @@ const defaultState = {
   items: [],
   isDescriptionActive: false,
   currentPokemonId: null,
+  currentCategory: null,
 }
 
 export const reducer = (state = defaultState, action) => {
@@ -21,6 +22,9 @@ export const reducer = (state = defaultState, action) => {
         ...state,
         items: [...state.items, ...action.payload]
       }
+
+    case "CURRENT_CATEGORY":
+      return {...state, currentCategory: action.payload}
 
     default:
       return state

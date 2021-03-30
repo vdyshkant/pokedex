@@ -26,7 +26,7 @@ function preetifyTitle(title){
 }
 
 const pokemonSelector = createSelector(
-  state => state.items,
+  state => state.itemCollection,
   state => state.currentPokemonId,
   (items, activePokemonId) => {
     const data = items.filter(({ id }) => id === activePokemonId);

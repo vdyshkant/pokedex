@@ -1,40 +1,11 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import { createSelector } from "reselect";
-import styled from 'styled-components'
-import {ItemContainer} from "./Item/ItemContainer";
-
-const FilterContainer = styled.div`
-  margin-bottom: 20px;
-  
-  .filter-list {
-    list-style-type: none;
-  }
-  
-  .filter-item {
-    display: inline-block;
-    padding: 5px 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-right: 4px;
-    background: transparent;
-    transition: 300ms ease-out;
-    color: #000;
-    cursor: pointer;
-    
-    &.active {
-      background-color: deepskyblue;
-    }
-    
-    &:hover {
-      background: steelblue;
-      color: #fff;
-    }
-  }
-`
+import {setCurrentCategory} from '../../store/reducer'
+import {FilterContainer} from './FilterContainer'
 
 const tagsSelector = createSelector(
-  state => state.items,
+  state => state.itemCollection,
   (items) => {
 
     const arr = items.reduce( (acc, currentValue, i) => {
@@ -54,7 +25,7 @@ const Filter = () => {
   const currentCategory = useSelector(state => state.currentCategory)
 
   const showTheOnlyCategory = (item) => {
-    dispatch({type: 'CURRENT_CATEGORY', payload: item})
+    dispatch(setCurrentCategory(item))
   }
 
   const allItemsClasses = `

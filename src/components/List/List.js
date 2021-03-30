@@ -5,10 +5,11 @@ import Button from '../Button/Button'
 import {ListContainer} from "./ListContainer";
 
 const List = () => {
-  const list = useSelector( state => state.items )
+  const itemCollection = useSelector( state => state.itemCollection )
+
   return (
     <ListContainer>
-      { list.map( (item, i) => {
+      { itemCollection.map( (item, i) => {
         return <Item key={i} pokemon={item} />
       } ) }
       <Button />

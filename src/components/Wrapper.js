@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 
-const Container = styled.main`
-    outline: 2px dashed dodgerblue;
-    
+const Container = styled.main`    
     width: 100%;
     margin-right: auto;
     margin-left: auto;

@@ -10,7 +10,14 @@ import {updateUrl, updateCollection} from './store/reducer'
 import {createGlobalStyle} from 'styled-components'
 
 const Global = createGlobalStyle`
-* {
+
+body {
+  min-height: 100vh;
+  background: rgba(241,231,103,1);
+  background: linear-gradient(135deg, rgba(241,231,103,1) 0%, rgba(241,231,103,1) 61%, rgba(254,182,69,1) 100%);
+}
+
+body > * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -18,11 +25,7 @@ const Global = createGlobalStyle`
   font-family: 'Roboto', sans-serif;
 }
 
-body {
-  min-height: 100vh;
-  background: rgba(241,231,103,1);
-  background: linear-gradient(135deg, rgba(241,231,103,1) 0%, rgba(241,231,103,1) 61%, rgba(254,182,69,1) 100%);
-}`
+`
 
 const Container = styled.div`
   display: flex;

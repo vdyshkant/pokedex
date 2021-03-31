@@ -13,6 +13,12 @@ const Global = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
   font-family: 'Roboto', sans-serif;
 }
+
+body {
+  min-height: 100vh;
+  background: rgba(241,231,103,1);
+  background: linear-gradient(135deg, rgba(241,231,103,1) 0%, rgba(241,231,103,1) 61%, rgba(254,182,69,1) 100%);
+}
 `
 
 ReactDOM.render(

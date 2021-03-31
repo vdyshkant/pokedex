@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import {ItemContainer} from './ItemContainer'
-import Tags from '../Tags'
+import Tags from '../Tags/Tags'
 import {makeDescriptionActive, setCurrentPokemonId} from '../../store/reducer'
 
 const Item = ({pokemon}) => {

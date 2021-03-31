@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux'
+import {Provider, useDispatch, useSelector} from 'react-redux'
 import Wrapper from './components/Wrapper'
 import Header from './components/Header'
 import Filter from './components/Filter/Filter'
@@ -7,6 +7,22 @@ import List from './components/List/List'
 import Description from './components/Description/Description'
 import styled from 'styled-components'
 import {updateUrl, updateCollection} from './store/reducer'
+import {createGlobalStyle} from 'styled-components'
+
+const Global = createGlobalStyle`
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: rgba(241,231,103,1);
+  background: linear-gradient(135deg, rgba(241,231,103,1) 0%, rgba(241,231,103,1) 61%, rgba(254,182,69,1) 100%);
+}`
 
 const Container = styled.div`
   display: flex;
@@ -55,20 +71,23 @@ function App() {
 
 
   return (
-    <Wrapper>
+    <>
+      <Global />
+      <Wrapper>
 
-      <Header title={'Pokedex'} />
+        <Header title={'Pokedex'} />
 
-      <Filter />
+        <Filter />
 
-      <Container>
-        <List />
+        <Container>
+          <List />
 
-        {isDescriptionActive && <Description />}
-      </Container>
+          {isDescriptionActive && <Description />}
+        </Container>
 
 
-    </Wrapper>
+      </Wrapper>
+    </>
   );
 }
 

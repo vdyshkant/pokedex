@@ -6,6 +6,8 @@ export const FilterContainer = styled.div`
   
   .filter-list {
     list-style-type: none;
+    padding: 0;
+    margin: 0;
   }
   
   .filter-item {

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ItemContainer = styled.div`
-  outline: 2px dashed magenta;
+  border: 2px solid #a0a0a0;
 
   min-height: 180px; 
   height: fit-content;
@@ -16,7 +16,6 @@ export const ItemContainer = styled.div`
     width: 100%;
     max-width: 100%;
     margin-bottom: 0.8rem;
-    max-height: 180px;
   }
   
   .name {

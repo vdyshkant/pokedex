@@ -11,7 +11,7 @@ export const FilterContainer = styled.div`
   .filter-item {
     display: inline-block;
     padding: 5px 15px;
-    border: 1px solid #ccc;
+    border: 1px solid #0371d5;
     border-radius: 5px;
     background: transparent;
     transition: 300ms ease-out;

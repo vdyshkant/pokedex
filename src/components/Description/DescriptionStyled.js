@@ -5,15 +5,25 @@ export const DescriptionStyled = styled.div`
 
   position: sticky;
   top: 20px;
-  margin-top: 200px;
   margin-left: 20px;
   
   height: fit-content;
-  max-width: 360px;
   padding: 1rem;
+  width: 45%;
+  
+  @media (min-width:576px) {
+    max-width: 220px;
+    width: 100%;
+  }
+    
+  @media (min-width:768px) {
+    max-width: 240px;
+    margin-top: 100px;
+  }
   
   @media (min-width:1300px) {
-    width: 380px;
+    max-width: 330px;
+    margin-top: 200px;
   }
   
   .avatar {

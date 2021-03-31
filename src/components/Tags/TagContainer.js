@@ -7,7 +7,7 @@ export const TagContainer = styled.div`
       font-style: normal;
       padding: 5px 15px;
       border-radius: 5px;
-      border: 1px solid red;
+      border: 1px solid #ccc;
       margin-right: 5px;
       margin-bottom: 5px;
       
@@ -25,25 +25,21 @@ export const TagContainer = styled.div`
       &--grass {
         background: rgba(180,245,0,1);
         background: linear-gradient(to bottom, rgba(180,245,0,1) 0%, rgba(104,191,24,1) 100%);
-        border: 1px solid #197500;
       }
       
       &--poison {
         background: rgba(195,147,220,1);
         background: linear-gradient(to bottom, rgba(195,147,220,1) 0%, rgba(201,108,229,1) 100%);
-        border: 1px solid #d286ea;
       }
       
       &--fire {
         background: rgba(245,0,12,1);
         background: linear-gradient(to bottom, rgba(255,128,134,1) 0%, rgba(236,128,101,1) 100%);
-        border: 1px solid #e73827;
       }
           
       &--electric {
         background: rgba(252,234,187,1);
         background: linear-gradient(to bottom, rgba(252,234,187,1) 0%, rgba(252,205,77,1) 50%, rgba(248,181,0,1) 51%, rgba(251,223,147,1) 100%);
-        border: 1px solid #f8b600;
       }
           
       &--water {

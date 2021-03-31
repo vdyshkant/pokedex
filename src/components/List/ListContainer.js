@@ -2,17 +2,22 @@ import styled from "styled-components";
 
 export const ListContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 20px;
   padding-bottom: 60px;
-  
-  outline: 2px solid gold;
+  width: 50%;
     
   @media (min-width:576px) {
     position: relative;
+    grid-template-columns: 1fr 1fr;
+    width: 320px;
+  }
+    
+  @media (min-width:768px) {
+    width: 460px;
+    grid-template-columns: 1fr 1fr 1fr;
   }
   
   @media (min-width:1300px) {
-    width: 650px;
+    width: 680px;
   }
 `

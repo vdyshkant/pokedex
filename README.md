@@ -35,5 +35,5 @@ yarn start
 ```  
 Navigate to web app and start it up.  
 
-http://localhost:3003/pokedex
+http://localhost:3000/pokedex
   

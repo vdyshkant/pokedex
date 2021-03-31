@@ -6,6 +6,16 @@ export const ItemContainer = styled.div`
   min-height: 180px; 
   height: fit-content;
   padding: 10px;
+  cursor: pointer;
+  user-select: none;
+    
+  @media (min-width:768px) {
+    transition: 300ms ease-out;
+    
+    &:hover {
+      border: 2px solid #fff;
+    }
+  }
   
   &.is-hidden {
     display: none;

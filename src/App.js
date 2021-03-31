@@ -8,7 +8,7 @@ import Description from './components/Description/Description'
 import styled from 'styled-components'
 import {updateUrl, updateCollection} from './store/reducer'
 import {createGlobalStyle} from 'styled-components'
-import 'fonts.css'
+import './fonts.css'
 
 const Global = createGlobalStyle`
 * {
